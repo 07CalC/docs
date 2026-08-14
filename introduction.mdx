@@ -1,7 +1,7 @@
 ---
-title: "fyrer: Declarative Monorepo Task Orchestrator"
+title: "fyrer: Declarative Task Orchestration for Monorepos"
 sidebarTitle: "Introduction"
-description: "fyrer is a fast, language-agnostic monorepo task runner that resolves task dependencies into a DAG, runs levels concurrently, caches builds, and streams colorized logs."
+description: "fyrer resolves monorepo task dependencies into a DAG, runs each level concurrently, caches builds by input hash, and streams colorized logs."
 ---
 
 fyrer is a declarative, language-agnostic monorepo task orchestrator written in Rust. In a large monorepo — whether it spans TypeScript, Rust, Go, Python, or any other language — running tasks across dozens of packages in the right order, without redundant rebuilds and without losing output, is painful. fyrer solves this by reading a single `fyrer.yml` config, turning your task relationships into a directed acyclic graph (DAG), and executing each level of that graph concurrently so you get the fastest possible run every time.

@@ -1,5 +1,5 @@
 ---
-title: "Task Configuration Reference for fyrer.yml"
+title: "fyrer.yml Task Configuration: Complete Field Reference"
 sidebarTitle: "Tasks"
 description: "Full reference for task fields in fyrer.yml: cmd, depends_on, inputs, outputs, cache, persistent, watch, timeout, cwd, env, and env_file."
 ---
@@ -73,7 +73,7 @@ tasks:
       - node_modules/**
     cache: true
     timeout: 5m
-    cwd: .
+    cwd: subdir
     env:
       NODE_ENV: production
     env_file: .env.production
@@ -84,6 +84,6 @@ tasks:
 - **`cmd` must not be empty.**
 - **`timeout` must be greater than zero** if specified.
 - **`cwd` must be relative** and must exist inside the package root.
-- **`inputs`, `outputs`, and `ignore`** must be valid glob patterns and relative paths.
+- **`inputs`, `outputs`, and `ignore`** must be valid glob patterns.
 - **`cache` cannot be combined with `persistent` or `watch`** — a cached task must be finite and non-restarting.
 - **`env_file` must be relative** and must exist at the time fyrer starts.

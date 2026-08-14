@@ -1,5 +1,5 @@
 ---
-title: "How fyrer Executes Tasks Across Your Monorepo"
+title: "How fyrer Executes Tasks: Scheduling and Concurrency"
 sidebarTitle: "How It Works"
 description: "A complete guide to fyrer's execution model: config parsing, DAG resolution, level-based concurrency, caching, and failure propagation."
 ---
@@ -18,11 +18,11 @@ fyrer is a task runner, not a build system. It orchestrates commands you define,
   <Step title="Level execution">
     Tasks are grouped into execution levels. Tasks with no unmet dependencies form level 0 and run immediately. Tasks whose dependencies are all in level 0 form level 1, and so on. All tasks within a level run concurrently; fyrer waits for the entire level to finish before advancing to the next.
   </Step>
-  <Step title="Output streaming">
-    As each task runs, its stdout and stderr are streamed in real time. In plain mode (`-n`), every line is prefixed with the `package:task` label and colorized so interleaved output from concurrent tasks remains easy to read. The default TUI mode routes logs into a per-task pane you can browse interactively.
-  </Step>
   <Step title="Cache check">
     For tasks with `cache: true`, fyrer computes a blake3 hash of the task's ID, command, working directory, resolved environment, matched input file contents, and the cache keys of every dependency. If a matching cache entry exists, the task is skipped and reported as `⚡ Cached`. Declared outputs are restored from the cache archive before the skip.
+  </Step>
+  <Step title="Output streaming">
+    For tasks that are not cached, their stdout and stderr are streamed in real time as the command runs. In plain mode (`-n`), every line is prefixed with the `package:task` label and colorized so interleaved output from concurrent tasks remains easy to read. The default TUI mode routes logs into a per-task pane you can browse interactively.
   </Step>
   <Step title="Completion">
     After all tasks have run, a summary is shown with counts for successful, failed, cached, and skipped tasks, plus the total wall-clock duration.

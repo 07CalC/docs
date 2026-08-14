@@ -1,5 +1,5 @@
 ---
-title: "Configuring Packages in fyrer.yml"
+title: "Configuring Packages in fyrer.yml: A Full Reference"
 sidebarTitle: "Packages"
 description: "Reference for all package configuration fields in fyrer.yml: name, root, env, env_file, and tasks — the building blocks of your monorepo."
 ---
@@ -98,7 +98,7 @@ packages:
 - **Package names must be unique** across the entire `packages` list.
 - **`root` must be a relative path** — absolute paths are rejected.
 - **`root` must exist** on disk at the time fyrer starts.
-- **`env_file` must be relative** and must exist inside the package root.
+- **`env_file` must be relative** and must exist on disk at the time fyrer starts.
 
 <Tip>
   Use short, lowercase package names (e.g., `api`, `web`, `ui`) — they appear in log prefixes and task specifiers like `web:dev`.

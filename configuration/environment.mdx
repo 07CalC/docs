@@ -1,5 +1,5 @@
 ---
-title: "Environment Variables and .env Files in fyrer"
+title: "fyrer Environment Variables: Precedence and .env Files"
 sidebarTitle: "Environment"
 description: "How fyrer merges environment variables from fyrer.yml and .env files — precedence order, .env file format, and per-task overrides explained."
 ---
@@ -36,7 +36,7 @@ fyrer's `.env` parser is intentionally simple:
 - No shell variable expansion — values are taken literally.
 
 ```bash .env
-DATABASE_URL=postgres://localhost/myapp
+NODE_ENV=production
 PORT=3000
 # This is a comment
 ```

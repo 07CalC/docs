@@ -1,5 +1,5 @@
 ---
-title: "Build Caching in fyrer: Skip Unchanged Tasks"
+title: "fyrer Build Caching: Skip Tasks with Unchanged Inputs"
 sidebarTitle: "Caching"
 description: "Learn how fyrer's content-addressed local cache skips tasks whose inputs haven't changed, and how to enable and configure it with inputs and outputs."
 ---
@@ -90,5 +90,5 @@ build:
 A few combinations are not allowed and will be rejected at startup:
 
 - **`cache: true` + `persistent: true`** — Dev servers run indefinitely and never produce a stable final output, so they cannot be cached.
-- **`cache: true` + `watch: true`** — Watch-mode tasks restart on file changes and don't have a single deterministic "done" state to cache.
+- **`cache: true` + `watch: true`** — The `watch` flag is reserved for a future release; combining it with `cache: true` is rejected at startup regardless, because a watch-mode task would not have a single deterministic "done" state to cache.
 - **Tasks without `inputs`** — If no `inputs` are declared, the cache key is computed from the task config alone (ID, command, environment). Any file change in the package will *not* invalidate the cache. Always declare `inputs` for tasks that read source files.
